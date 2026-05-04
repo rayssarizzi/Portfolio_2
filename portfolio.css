@@ -17,6 +17,12 @@ html {
     scroll-behavior: smooth;
 }
 
+/*SAUDACAO*/
+#saudacao {
+    font-size: 18px;
+    color: #6c6c6c;
+    margin-bottom: 10px;
+}
 
 /* MENU SUPERIOR */
 header {
@@ -164,6 +170,20 @@ p {
 .btn:hover {
     background-color: #6f705f;
     transform: scale(1.05);
+}
+
+button {
+    background-color: #848474;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6f705f;
 }
 
 /* ÍCONES SOCIAIS */

@@ -28,9 +28,13 @@
 
     <section class="container">
 
+        <p id="saudacao"></p>
+
         <section id="sobre">
             <div>
-                <a href="index.html" target="_blank" rel="noopener noreferrer"><h1>RAYSSA PAZELI RIZZI</h1></a>
+                <a href="index.html" target="_blank">
+                    <h1>RAYSSA PAZELI RIZZI</h1>
+                </a>
             </div>
             <h2>Desenvolvedora de Software Multiplataforma</h2>
 
@@ -54,40 +58,21 @@
 
         <!-- PROJETOS -->
         <section id="projetos">
-            <div class="projetos">
-                <div class="bloco pequeno">
-                    <img src="./img/koitech.jpg" alt="koitech">
-                    <h3>Koitech</h3>
-                    <p>Projeto criado pela equipe da faculdade para atender os requisitos de um cliente real.
-                        Condiz com minha participação o desing do site, atuação de front-end. Além disso, também atuei
-                        no processo de tratamento de dados no Colab.
-                    </p>
-                    <a class="btn" href="https://github.com/koitech-API" target="_blank" rel="noopener noreferrer">Saiba
-                        Mais</a>
-                </div>
+            <h2>Projetos</h2>
 
-
-                <div class="bloco pequeno">
-                    <img src="./img/primeiro web.png" alt="primeiro web">
-                    <h3>Primeiro Web</h3>
-                    <p>Primeira experiência desenvolvendo um site web, com tema voltado ao café. Atráves dessa, contei,
-                        brevemente, sobre a história do café, seu passado e sua importância.</p>
-                    <a class="btn" href="https://primeiro-web-one.vercel.app/" target="_blank"
-                        rel="noopener noreferrer">Saiba
-                        Mais</a>
-                </div>
+            <div>
+                <button onclick="filtrarProjetos('TODOS')">Todos</button>
+                <button onclick="filtrarProjetos('WEB')">Web</button>
+                <button onclick="filtrarProjetos('API')">API</button>
             </div>
+
+            <div id="lista-projetos" class="projetos"></div>
         </section>
 
         <!-- BLOCO CERTIFICADOS -->
         <section id="certificados">
-            <div class="bloco grande">
-                <img src="./img/certificado escola de inovadores.png" alt="certificado escola de inovadores">
-            </div>
-
-            <div class="bloco grande">
-                <img src="./img/certificado scrum.png" alt="certificado scrum">
-            </div>
+            <h2>Cursos e Certificações</h2>
+            <div id="lista-cursos"></div>
         </section>
 
         <!-- BLOCO EXPERIENCIAS -->
@@ -117,15 +102,9 @@
             </div>
         </section>
 
-        <section id="experiencias">
-            <div class="bloco grande">
-                <h3>SOFT SKILLS</h3>
-                <p>Criatividade</p>
-                <p>Organização</p>
-                <p>Adaptabilidade</p>
-                <p>Trabalho em Equipe</p>
-            </div>
-
+        <section>
+            <h2>Habilidades</h2>
+            <div id="lista-habilidades"></div>
         </section>
 
         <section id="curriculo">
