@@ -1,3 +1,17 @@
+let listaProjetos = []
+
+async function carregarProjetos() {
+    try {
+        let resposta = await fetch("http://localhost:3000/projetos")
+        let dados = await resposta.json()
+
+        listaProjetos = dados
+        mostrarProjetos(listaProjetos)
+    } catch (erro) {
+        console.error("Erro ao buscar projetos:", erro)
+    }
+}
+
 // SAUDAÇÃO (IF / ELSE)
 function mostrarSaudacao() {
     let hora = new Date().getHours()
@@ -16,26 +30,6 @@ function mostrarSaudacao() {
         elemento.innerText = mensagem
     }
 }
-
-// DADOS (ARRAYS)
-let projetos = [
-    {
-        nome: "Koitech",
-        descricao: "Projeto para cliente real. Atuei no design e front-end.",
-        tecnologia: "HTML, CSS, JS",
-        imagem: "./img/koitech.jpg",
-        link: "https://github.com/koitech-API",
-        categorias: ["WEB", "API"]
-    },
-    {
-        nome: "Primeiro Web",
-        descricao: "Site sobre café, contando história e importância.",
-        tecnologia: "HTML e CSS",
-        imagem: "./img/primeiro web.png",
-        link: "https://primeiro-web-one.vercel.app/",
-        categorias: ["WEB"]
-    }
-]
 
 let cursos = [
     {
@@ -60,9 +54,8 @@ let habilidades = [
     "MySQL"
 ]
 
-// FUNÇÕES + FOR
 // PROJETOS
-function mostrarProjetos(lista = projetos) {
+function mostrarProjetos(lista) {
     let container = document.getElementById("lista-projetos")
     if (!container) return
 
@@ -73,11 +66,10 @@ function mostrarProjetos(lista = projetos) {
 
         container.innerHTML += `
         <div class="bloco pequeno">
-            <img src="${p.imagem}" alt="${p.nome}">
+            ${p.imagem ? `<img src="${p.imagem}" alt="${p.nome}">` : ""}
             <h3>${p.nome}</h3>
             <p>${p.descricao}</p>
-            <p><strong>Tecnologias:</strong> ${p.tecnologia}</p>
-            <a class="btn" href="${p.link}" target="_blank">Saiba mais</a>
+            ${p.link ? `<a class="btn" href="${p.link}" target="_blank">Saiba mais</a>` : ""}
         </div>
         `
     }
@@ -116,17 +108,16 @@ function mostrarHabilidades() {
     }
 }
 
-// EXTRA (IF / ELSE)
 // FILTRO DE PROJETOS
 function filtrarProjetos(categoria) {
     if (categoria === "TODOS") {
-        mostrarProjetos()
+        mostrarProjetos(listaProjetos)
     } else {
         let filtrados = []
 
-        for (let i = 0; i < projetos.length; i++) {
-            if (projetos[i].categorias.includes(categoria)) {
-                filtrados.push(projetos[i])
+        for (let i = 0; i < listaProjetos.length; i++) {
+            if (listaProjetos[i].categorias?.includes(categoria)) {
+                filtrados.push(listaProjetos[i])
             }
         }
 
@@ -134,8 +125,24 @@ function filtrarProjetos(categoria) {
     }
 }
 
-// INICIALIZAÇÃO
+async function criarProjeto() {
+    let nome = document.getElementById("nomeProjeto").value
+    let descricao = document.getElementById("descProjeto").value
+    let imagem = document.getElementById("imgProjeto").value
+    let link = document.getElementById("linkProjeto").value
+
+    await fetch("http://localhost:3000/projetos", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ nome, descricao, imagem, link })
+    })
+
+    carregarProjetos()
+}
+
 mostrarSaudacao()
-mostrarProjetos()
+carregarProjetos()
 mostrarCursos()
 mostrarHabilidades()

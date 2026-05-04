@@ -105,6 +105,46 @@ p {
 }
 
 /* PROJETOS */
+.form-section {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.form-container {
+    max-width: 600px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 15px;
+}
+
+.form-container input,
+.form-container textarea {
+    flex: 1 1 48%; 
+    padding: 12px;
+    border-radius: 10px;
+    border: 2px solid #d9b6b6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form-container input:focus,
+.form-container textarea:focus {
+    border-color: #6c6c6c;
+    outline: none;
+    box-shadow: 0 0 5px #6c6c6c;
+}
+
+.form-container button {
+    flex: 1 1 100%;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.form-container button:hover {
+    background-color: #6c6c6c;
+    transform: scale(1.05);
+}
+
 .projetos {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
